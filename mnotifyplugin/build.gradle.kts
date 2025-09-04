@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
 }
 
-val pluginVersion = "1.0.2" // Define once for consistency
+val pluginVersion = "1.0.3" // Define once for consistency
 
 repositories {
     google()
@@ -25,7 +25,7 @@ gradlePlugin {
     plugins {
         create("mnotifyplugin") {
             id = "com.github.mnotifysdk.mnotifyplugin"
-//            id = "com.convex.mnotifyplugin" // Match your package
+//            id = "com.github.mnotifysdk.mnotifyplugin" // Match your package
             implementationClass = "com.convex.mnotifyplugin.MainGradlePlugin"
             version = pluginVersion// Add version here
         }

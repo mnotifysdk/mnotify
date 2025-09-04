@@ -3,7 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("maven-publish")
 }
-val SDKVersion = "1.0.2" // Define once for consistency
+val SDKVersion = "1.0.3" // Define once for consistency
 
 android {
     namespace = "com.convex.mnotifysdk"
