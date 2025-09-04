@@ -1,5 +1,5 @@
 package com.convex.mnotifysdk.model
 
-data class BNotifyTokenModel(
+data class MNotifyTokenModel(
     val token: String,
 )

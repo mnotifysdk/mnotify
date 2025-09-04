@@ -2,7 +2,7 @@ package com.convex.mnotifysdk.services.firebase
 
 import android.content.Context
 import android.util.Log
-import com.convex.mnotifysdk.model.BnotifyConfig
+import com.convex.mnotifysdk.model.MnotifyConfig
 import com.google.firebase.FirebaseApp
 import com.google.firebase.FirebaseOptions
 import kotlin.collections.any
@@ -18,7 +18,7 @@ internal object FirebaseManual {
 //        val serverKey: String = """<Replace this text with the FIREBASE SERVER KEY or upload a file>"""
 //    )
 
-    fun initialize(context: Context, cfg: BnotifyConfig) {
+    fun initialize(context: Context, cfg: MnotifyConfig) {
         if (FirebaseApp.getApps(context).any()) return
 
         val options = FirebaseOptions.Builder()

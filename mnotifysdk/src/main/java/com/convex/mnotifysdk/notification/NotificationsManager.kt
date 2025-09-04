@@ -37,7 +37,7 @@ import kotlin.text.toIntOrNull
 internal object NotificationsManager {
     private lateinit var notificationManager: NotificationManager
     private var isInitialized = false
-    private const val CHANNEL_ID = "bnotify_channel"
+    private const val CHANNEL_ID = "mnotify_channel"
 
     fun init(context: Context) {
         if (!isInitialized) {
@@ -83,7 +83,7 @@ internal object NotificationsManager {
                 showNotification(notificationBuilder.build(), notificationId,model)
             }
         }catch (e: Exception){
-            Log.e("Bnotify", "${e.printStackTrace()}")
+            Log.e("Mnotify", "${e.printStackTrace()}")
         }
     }
 
@@ -114,7 +114,7 @@ internal object NotificationsManager {
 //            PendingIntent.FLAG_UPDATE_CURRENT
 //        }
         // For the main click action (when notification is clicked)
-        val clickIntent = Intent(context, BNotifyApp.getActivityToOpenOnClick(context)).apply {
+        val clickIntent = Intent(context, MNotifyApp.getActivityToOpenOnClick(context)).apply {
             putExtra(NotifyConstants.From, "notification")
             putExtra(NotifyConstants.SCREEN, model.screen)
             putExtra(NotifyConstants.ACTION, NotifyConstants.ClickedEvent) // Action when clicked

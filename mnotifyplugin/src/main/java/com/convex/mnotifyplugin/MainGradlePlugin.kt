@@ -10,7 +10,7 @@ import java.io.File
 
 
 @Serializable
-internal data class BnotifyConfig(
+internal data class MnotifyConfig(
     val projectId: String,
     val packageName: String,
     val apiKey: String,
@@ -28,7 +28,7 @@ internal data class BnotifyConfig(
 
 class MainGradlePlugin: Plugin<Project>  {
 
-    private val CONFIG_FILE_NAME: String = "bnotify-config.json"
+    private val CONFIG_FILE_NAME: String = "mnotify-config.json"
 
     override fun apply(project: Project) {
         println("✅ Custom Plugin Applied!")
@@ -56,7 +56,7 @@ class MainGradlePlugin: Plugin<Project>  {
                 val outputFile = File(project.projectDir, "src/main/java/$packagePath/GeneratedConfig.kt")
 
                 val jsonContent = jsonFile.readText()
-                val config = Json.decodeFromString<BnotifyConfig>(jsonContent)
+                val config = Json.decodeFromString<MnotifyConfig>(jsonContent)
 
                 outputFile.parentFile.mkdirs()
                 outputFile.writeText(

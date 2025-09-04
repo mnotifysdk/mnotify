@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("maven-publish")
 }
+val SDKVersion = "1.0.1" // Define once for consistency
 
 android {
     namespace = "com.convex.mnotifysdk"
@@ -40,7 +41,7 @@ publishing {
         create<MavenPublication>("release") {
             groupId = "com.github.mnotifysdk"
             artifactId = "mnotifysdk"
-            version = "1.0.0"
+            version = SDKVersion
 
             afterEvaluate {
                 from(components["release"])

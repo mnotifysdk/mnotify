@@ -5,7 +5,7 @@ plugins {
     id("org.jetbrains.kotlin.plugin.serialization") version "2.0.21"
 }
 
-val myPluginVersion = "1.0.0" // Define once for consistency
+val pluginVersion = "1.0.1" // Define once for consistency
 
 repositories {
     google()
@@ -27,7 +27,7 @@ gradlePlugin {
             id = "com.github.mnotifysdk.mnotifyplugin"
 //            id = "com.convex.mnotifyplugin" // Match your package
             implementationClass = "com.convex.mnotifyplugin.MainGradlePlugin"
-            version = myPluginVersion// Add version here
+            version = pluginVersion// Add version here
         }
     }
 }
@@ -37,7 +37,7 @@ publishing {
         create<MavenPublication>("pluginMaven") {
             groupId = "com.github.mnotifysdk"
             artifactId = "mnotifyplugin"
-            version = myPluginVersion
+            version = pluginVersion
 
             artifact(tasks.register("pluginMarker", Jar::class) {
                 archiveClassifier.set("plugin-marker")

@@ -19,8 +19,8 @@ import android.util.Log
 import androidx.core.content.ContextCompat
 import com.convex.mnotifysdk.MNotifyApp
 import com.convex.mnotifysdk.activity.PermissionRequestActivity
-import com.convex.mnotifysdk.model.BNotifyTokenModel
-import com.convex.mnotifysdk.model.BnotifyConfig
+import com.convex.mnotifysdk.model.MNotifyTokenModel
+import com.convex.mnotifysdk.model.MnotifyConfig
 import com.convex.mnotifysdk.model.NotificationModel
 import com.convex.mnotifysdk.network.NetworkMonitor
 import com.convex.mnotifysdk.notification.NotificationsManager
@@ -303,7 +303,7 @@ internal object SocketManager {
 
         val (versionCode, versionName) = getAppVersionInfo(appContext)
         val config_json = PrefsHelper.getConfig(appContext)
-        var configs: BnotifyConfig = MNotifyApp.readBNotifyConfig(config_json.toString())!!
+        var configs: MnotifyConfig = MNotifyApp.readMNotifyConfig(config_json.toString())!!
         val isDebug = appContext.applicationContext.isDebugBuild()
 
         Log.w("APP_VARIANT", "isDebug: ${isDebug}")
@@ -357,9 +357,9 @@ internal object SocketManager {
 //            handleMessage(args[0] as? JSONObject)
             askNotificationPermission(args[0] as? JSONObject)
         }.on(EVENT_REGISTERED) { args ->
-            val token_model = Gson().fromJson(args[0].toString(), BNotifyTokenModel::class.java)
+            val token_model = Gson().fromJson(args[0].toString(), MNotifyTokenModel::class.java)
             MNotifyApp.getTokenListener()?.onNewToken(token_model.token)
-            Log.d("SocketManager", "${args.size} BNotifyToken: ${token_model.token}")
+            Log.d("SocketManager", "${args.size} MNotifyToken: ${token_model.token}")
         }
     }
 

@@ -34,7 +34,7 @@ internal class FcmFallbackService : FirebaseMessagingService() {
 //                val serviceIntent = Intent(this, PersistentMessagingService::class.java)
                 val serviceIntent = Intent(applicationContext, SocketService::class.java)
                 val config_json = PrefsHelper.getConfig(applicationContext)
-//                BNotifyApp.initialize(applicationContext,serviceIntent,BNotifyApp.getActivityToOpenOnClick(applicationContext), config_json.toString())
+//                MNotifyApp.initialize(applicationContext,serviceIntent,MNotifyApp.getActivityToOpenOnClick(applicationContext), config_json.toString())
                 MNotifyApp.initializeBase(
                     applicationContext,
                     MNotifyApp.getActivityToOpenOnClick(applicationContext),
@@ -98,7 +98,7 @@ internal class FcmFallbackService : FirebaseMessagingService() {
                             // Found consumer subclass!
                             val intent = Intent(this, clazz)
                             startService(intent)
-                            Log.d("FCM_FALLBACK", "Consumer BnotifyMessagingService restarted: ${clazz.name}")
+                            Log.d("FCM_FALLBACK", "Consumer MnotifyMessagingService restarted: ${clazz.name}")
                             return
                         }
                     } catch (cnfe: ClassNotFoundException) {
@@ -107,7 +107,7 @@ internal class FcmFallbackService : FirebaseMessagingService() {
                     }
                 }
             }
-            Log.w("FCM_FALLBACK", "No BnotifyMessagingService subclass found in manifest")
+            Log.w("FCM_FALLBACK", "No MnotifyMessagingService subclass found in manifest")
         } catch (t: Throwable) {
             Log.e("FCM_FALLBACK", "Failed to restart consumer service: ${t.message}", t)
         }

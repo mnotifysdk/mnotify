@@ -2,17 +2,17 @@ package com.convex.mnotifysdk.config
 
 import android.content.Context
 import android.util.Log
-import com.convex.mnotifysdk.model.BnotifyConfig
+import com.convex.mnotifysdk.model.MnotifyConfig
 import org.json.JSONObject
 
-fun Context.readBNotifyConfig(): BnotifyConfig? {
+fun Context.readMNotifyConfig(): MnotifyConfig? {
     val json = GeneratedConfig.JSON ?: return null // safe null check
 
     return try {
         val jsonObject = JSONObject(json)
-        Log.i("Bnotify", "Extracted DATA: $json")
+        Log.i("Mnotify", "Extracted DATA: $json")
 
-        BnotifyConfig(
+        MnotifyConfig(
             projectId = jsonObject.optString("projectId"),
             packageName = jsonObject.optString("packageName"),
             apiKey = jsonObject.optString("apiKey"),
@@ -28,7 +28,7 @@ fun Context.readBNotifyConfig(): BnotifyConfig? {
             fcmSenderId = jsonObject.optString("fcmSenderId"),
         )
     } catch (e: Exception) {
-        Log.e("Bnotify", "Failed to parse config: ${e.message}")
+        Log.e("Mnotify", "Failed to parse config: ${e.message}")
         null
     }
 }

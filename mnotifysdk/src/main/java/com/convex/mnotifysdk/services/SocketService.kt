@@ -15,7 +15,7 @@ internal class SocketService : Service() {
     private val handler = Handler(Looper.getMainLooper())
     private val logRunnable = object : Runnable {
         override fun run() {
-            Log.i("Bnotify_SocketService", "✅ Still running (pid=${Process.myPid()})")
+            Log.i("Mnotify_SocketService", "✅ Still running (pid=${Process.myPid()})")
             handler.postDelayed(this, 60_000) // log every 60s
         }
     }
@@ -26,7 +26,7 @@ internal class SocketService : Service() {
         super.onCreate()
         SocketManager.initialize(applicationContext)
         SocketManager.connect()
-        Log.i("Bnotify_SocketService", "Service CREATED")
+        Log.i("Mnotify_SocketService", "Service CREATED")
         handler.post(logRunnable)
     }
 
@@ -41,7 +41,7 @@ internal class SocketService : Service() {
 
     override fun onDestroy() {
         SocketManager.disconnect()
-        Log.w("Bnotify_SocketService", "Service DESTROYED")
+        Log.w("Mnotify_SocketService", "Service DESTROYED")
         handler.removeCallbacks(logRunnable)
         super.onDestroy()
     }

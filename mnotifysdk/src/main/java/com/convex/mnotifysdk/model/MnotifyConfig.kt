@@ -1,6 +1,6 @@
 package com.convex.mnotifysdk.model
 
-data class BnotifyConfig(
+data class MnotifyConfig(
     val projectId: String,
     val packageName: String,
     val apiKey: String,
